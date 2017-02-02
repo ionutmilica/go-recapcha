@@ -1,0 +1,24 @@
+{{ define "app" }}
+    <html>
+    <head>
+        <title>Re-Captcha Test</title>
+    </head>
+    <body>
+
+    <form id="link-form" action="/captcha" method="post">
+        <div class="card-block">
+            <script src="https://www.google.com/recaptcha/api.js"></script>
+            <div class="g-recaptcha"  data-callback="submitForm" data-sitekey="{{ .siteKey }}"></div>
+        </div>
+    </form>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById('link-form');
+            form.submit();
+        }
+    </script>
+
+    </body>
+    </html>
+{{ end }}
