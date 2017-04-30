@@ -1,0 +1,4 @@
+package: github.com/ionutmilica/go-recaptcha
+import:
+- package: github.com/h2non/gock
+  version: ^1.0.4

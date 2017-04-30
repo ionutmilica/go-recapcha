@@ -1,0 +1,6 @@
+hash: 081cb93d180c0216fe56adb05138b11f1b35710e390f92abe571b11bf65adf3d
+updated: 2017-04-30T13:04:11.9757445+03:00
+imports:
+- name: github.com/h2non/gock
+  version: 2897ffde93a71060ce86518f1e7317ec8433d2d6
+testImports: []
