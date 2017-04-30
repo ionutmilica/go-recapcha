@@ -12,14 +12,17 @@ const (
 	verifyURL = "https://www.google.com/recaptcha/api/siteverify"
 )
 
-// Map some of the fields returned as json in the Recaptcha response
+// Map some of the fields returned as json in the ReCaptcha response
 type ReCaptchaResponse struct {
-	Success bool
-
-	//missing-input-secret		The secret parameter is missing.
-	//invalid-input-secret		The secret parameter is invalid or malformed.
-	//missing-input-response	The response parameter is missing.
-	//invalid-input-response	The response parameter is invalid or malformed.
+	Success bool `json:"success"`
+	// E.g: localhost
+	Hostname string `json:"hostname,omitempty"`
+	// E.g: 2017-04-30T10:32:09Z
+	ChallengeTs *time.Time `json:"challenge_ts,omitempty"`
+	// missing-input-secret		 The secret parameter is missing.
+	// invalid-input-secret		 The secret parameter is invalid or malformed.
+	// missing-input-response	 The response parameter is missing.
+	// invalid-input-response	 The response parameter is invalid or malformed.
 	ErrorCodes []string `json:"error-codes"`
 }
 

@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	secretKey = "--SECRET--KEY"
+	secretKey = "--SECRET-KEY--"
 	siteKey   = "--SITE-KEY--"
 )
 
@@ -20,9 +20,8 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		// In production you should parse the templates before running the server
+		// In production you should parse the templates outside of the http handlers
 		t, err := template.ParseFiles("app.tmpl")
-
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -42,11 +41,11 @@ func main() {
 
 		response, err := re.Verify(req.FormValue("g-recaptcha-response"), req.RemoteAddr)
 		if err != nil {
-			fmt.Fprintf(res, "Error: %s\n", err)
+			fmt.Fprintf(res, "Http Error: %s\n", err)
 			return
 		}
 
-		fmt.Fprintf(res, "Recaptcha response: %t\n", response.Success)
+		fmt.Fprintf(res, "Is captcha valid? %t\n", response.Success)
 	})
 
 	http.ListenAndServe(":8080", nil)
