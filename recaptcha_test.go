@@ -1,16 +1,16 @@
 package recaptcha
 
 import (
-	"testing"
 	"github.com/h2non/gock"
 	"reflect"
+	"testing"
 )
 
 func TestReCaptcha_Verify_Success(t *testing.T) {
 	successResponse := map[string]interface{}{
-		"success": true,
+		"success":      true,
 		"challenge_ts": "2017-04-30T10:36:08Z",
-		"hostname": "localhost",
+		"hostname":     "localhost",
 	}
 
 	defer gock.Off()
@@ -42,7 +42,7 @@ func TestReCaptcha_Verify_Success(t *testing.T) {
 
 func TestReCaptcha_Verify_InvalidInputResponse(t *testing.T) {
 	errorResponse := map[string]interface{}{
-		"success": false,
+		"success":     false,
 		"error-codes": []string{"invalid-input-response"},
 	}
 
